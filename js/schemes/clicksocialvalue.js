@@ -4,7 +4,6 @@
     
     document.body.addEventListener('click',
     function(e) {
-    //过滤a标签
         if (e.target.tagName == 'A') {
             return;
         }
