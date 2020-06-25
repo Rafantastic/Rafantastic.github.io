@@ -22,15 +22,15 @@
     var CONFIG = {"hostname":"rafantastic.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="第三章 横截面数据回归：机器学习方法 12#这一章的数据源啊~w &#x3D; read.csv(&quot;mg.csv&quot;)#读入数据，对不起网页数据不知道怎么下载下载后改了格式变成一格... 3.1 决策树分类(分类树)  决策树(decision tree)  回归树(regression tree) 分类树(classification tree)   回归树的一些概念  分割点  该节点的整个数据在这个分">
+  <meta name="description" content="第三章 横截面数据回归：机器学习方法12#这一章的数据源啊~w &#x3D; read.csv(&quot;mg.csv&quot;)#读入数据，对不起网页数据不知道怎么下载下载后改了格式变成一格... 3.1 决策树分类(分类树) 决策树(decision tree) 回归树(regression tree) 分类树(classification tree)   回归树的一些概念 分割点 该节点的整个数据在这个分割点比在其">
 <meta property="og:type" content="article">
 <meta property="og:title" content="复杂数据统计方法">
 <meta property="og:url" content="https://rafantastic.github.io/2020/06/25/%E5%A4%8D%E6%9D%82%E6%95%B0%E6%8D%AE%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/index.html">
 <meta property="og:site_name" content="Yuki">
-<meta property="og:description" content="第三章 横截面数据回归：机器学习方法 12#这一章的数据源啊~w &#x3D; read.csv(&quot;mg.csv&quot;)#读入数据，对不起网页数据不知道怎么下载下载后改了格式变成一格... 3.1 决策树分类(分类树)  决策树(decision tree)  回归树(regression tree) 分类树(classification tree)   回归树的一些概念  分割点  该节点的整个数据在这个分">
+<meta property="og:description" content="第三章 横截面数据回归：机器学习方法12#这一章的数据源啊~w &#x3D; read.csv(&quot;mg.csv&quot;)#读入数据，对不起网页数据不知道怎么下载下载后改了格式变成一格... 3.1 决策树分类(分类树) 决策树(decision tree) 回归树(regression tree) 分类树(classification tree)   回归树的一些概念 分割点 该节点的整个数据在这个分割点比在其">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-06-25T02:00:32.000Z">
-<meta property="article:modified_time" content="2020-06-25T15:33:16.730Z">
+<meta property="article:modified_time" content="2020-06-25T15:44:53.499Z">
 <meta property="article:author" content="Yooki Pan">
 <meta property="article:tag" content="R">
 <meta property="article:tag" content="Statistic">
@@ -204,7 +204,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-06-25 10:00:32 / 修改时间：23:33:16" itemprop="dateCreated datePublished" datetime="2020-06-25T10:00:32+08:00">2020-06-25</time>
+              <time title="创建时间：2020-06-25 10:00:32 / 修改时间：23:44:53" itemprop="dateCreated datePublished" datetime="2020-06-25T10:00:32+08:00">2020-06-25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -244,25 +244,19 @@
 
       
         <a id="more"></a>
-<h1>第三章 横截面数据回归：机器学习方法</h1>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#这一章的数据源啊~</span><br><span class="line">w = read.csv("mg.csv")#读入数据，对不起网页数据不知道怎么下载下载后改了格式变成一格...</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="3-1-决策树分类-分类树">3.1 决策树分类(分类树)</h2>
-<ul>
-<li>决策树(decision tree)
-<ul>
+<h1 id="第三章-横截面数据回归：机器学习方法"><a href="#第三章-横截面数据回归：机器学习方法" class="headerlink" title="第三章 横截面数据回归：机器学习方法"></a>第三章 横截面数据回归：机器学习方法</h1><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#这一章的数据源啊~</span><br><span class="line">w = read.csv("mg.csv")#读入数据，对不起网页数据不知道怎么下载下载后改了格式变成一格...</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="3-1-决策树分类-分类树"><a href="#3-1-决策树分类-分类树" class="headerlink" title="3.1 决策树分类(分类树)"></a>3.1 决策树分类(分类树)</h2><ul>
+<li>决策树(decision tree)<ul>
 <li>回归树(regression tree)</li>
 <li>分类树(classification tree)</li>
 </ul>
 </li>
-<li>回归树的一些概念
-<ul>
-<li>分割点
-<ul>
+<li>回归树的一些概念<ul>
+<li>分割点<ul>
 <li>该节点的整个数据在这个分割点比在其他分割点分成两部分之后的偏差之和都小</li>
 </ul>
 </li>
-<li>分割变量
-<ul>
+<li>分割变量<ul>
 <li>对每个自变量都选择这样一个分割点，并对不同自变量的分割结果作比较，得到一个使得分割后总偏差最小的变量</li>
 </ul>
 </li>
@@ -270,53 +264,38 @@
 </li>
 </ul>
 <figure class="highlight r"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">library</span>(rpart.plot)  <span class="comment">#同时自动打开rpart</span></span><br><span class="line">(a = rpart(y~.w))  <span class="comment">#计算决策树并输出决策树的细节</span></span><br><span class="line">rpart.plot(a,type=<span class="number">2</span>,faclen=<span class="literal">T</span>)  <span class="comment">#画出决策树的细节</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#交叉验证</span></span><br><span class="line">MSE = rep(<span class="number">0</span>,Z)</span><br><span class="line"><span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1</span>:Z){</span><br><span class="line">	m=mm[[i]];M=mean((w[m,D]-mean(w[m,D]))^<span class="number">2</span>)</span><br><span class="line">	a=rpart(y~.,w[-m,])  <span class="comment">#决策树回归</span></span><br><span class="line">	MSE[i]=mean((w[m,D]-predict(a,w[m,]))^<span class="number">2</span>)/M</span><br><span class="line">}</span><br><span class="line">mean(MSE)</span><br><span class="line"><span class="comment">#03624986</span></span><br></pre></td></tr></tbody></table></figure>
-<p>👉决策树不十分稳定(可能受到数据变化的影响)$\in$弱学习器👈<br>
-✨想法：通过组合的方式将弱学习器组合成(较)强学习器<br>
-$$<br>
-(较)强的学习器<br>
-\begin{cases}<br>
-boosting\<br>
-bagging\<br>
-随机森林\<br>
-\end{cases}<br>
-$$</p>
-<h2 id="3-2-boosting分类">3.2 boosting分类</h2>
-<p><strong>Q：如何生成较多的弱学习器？</strong><br>
-<strong>A：再抽样</strong> eg：自助法(bootstrap)抽样👉在数据中反复<strong>放回地</strong>抽取样本量大小相同的样本</p>
+<p>👉决策树不十分稳定(可能受到数据变化的影响)$\in$弱学习器👈</p>
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2728.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2728.png?v8">✨</span>想法：通过组合的方式将弱学习器组合成(较)强学习器</p>
+<script type="math/tex; mode=display">
+(较)强的学习器
+\begin{cases}
+boosting\\
+bagging\\
+随机森林\\
+\end{cases}</script><h2 id="3-2-boosting分类"><a href="#3-2-boosting分类" class="headerlink" title="3.2 boosting分类"></a>3.2 boosting分类</h2><p><strong>Q：如何生成较多的弱学习器？</strong><br><strong>A：再抽样</strong> eg：自助法(bootstrap)抽样👉在数据中反复<strong>放回地</strong>抽取样本量大小相同的样本</p>
 <ul>
-<li>
-<p>boosting方法会在每次再抽样时自动调整(eg：修改被抽中的概率/加权平均/…)</p>
-</li>
-<li>
-<p>model-based boosting 模型：</p>
+<li>boosting方法会在每次再抽样时自动调整(eg：修改被抽中的概率/加权平均/…)</li>
+<li><p>model-based boosting 模型：</p>
 <ul>
-<li>记号
-<ul>
+<li>记号<ul>
 <li>$f(x)$：回归的模型</li>
-<li>$f_j(x<sup>{(j)})$：由第$j$组自变量$x</sup>{(j)}$及某基本学习器$f_j$的结合</li>
+<li>$f_j(x^{(j)})$：由第$j$组自变量$x^{(j)}$及某基本学习器$f_j$的结合</li>
 <li>$\rho(·,·)$：损失函数</li>
-<li>$n$：训练样本 | $w_i$：权重 | $x^{(j)}$：自变量观测值 | $y_i$：因变量观测值<br>
-⚠这里仅考虑可加模型$$f(x)=\sum<sup>p_{j=1}f_j(x</sup>{(j)})$$</li>
+<li>$n$：训练样本 | $w_i$：权重 | $x^{(j)}$：自变量观测值 | $y_i$：因变量观测值<br>⚠这里仅考虑可加模型<script type="math/tex">f(x)=\sum^p_{j=1}f_j(x^{(j)})</script></li>
 </ul>
 </li>
 </ul>
 </li>
-<li>
-<p>模型<br>
-$$(\hat f_1,\hat f_2,…,\hat f_p)=\underset{(f_1,f_2,…f_p)}{\arg\min}\sum<sup>n_{i=1}w_i\rho(y_i,\sum</sup>p_{j=1}f_j(x^{(j)}))$$</p>
-</li>
+<li><p>模型</p>
+<script type="math/tex; mode=display">(\hat f_1,\hat f_2,...,\hat f_p)=\underset{(f_1,f_2,...f_p)}{\arg\min}\sum^n_{i=1}w_i\rho(y_i,\sum^p_{j=1}f_j(x^{(j)}))</script></li>
 </ul>
 <figure class="highlight r"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#基于模型的boosting(model-based boosting)</span></span><br><span class="line"><span class="comment">#对数据mg做bagging回归，直接求10折交叉验证测试集的NMSE</span></span><br><span class="line"><span class="keyword">library</span>(mboost)</span><br><span class="line">MSE = rep(<span class="number">0</span>,Z)</span><br><span class="line">set.seed(<span class="number">1010</span>)</span><br><span class="line"><span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1</span>:Z){</span><br><span class="line">	m=mm[[i]];M=mean((w[m,D]-mean(w[m,D]))^<span class="number">2</span>)</span><br><span class="line">	a=mboost(y~btree(x1)+btree(x2)+btree(x3)+btree(x4)+btree(x5)+btree(x6),w[-m,])</span><br><span class="line">	MSE[i]=mean((w[m,D]-predict(a,w[m,]))^<span class="number">2</span>)/M</span><br><span class="line">}</span><br><span class="line">mean(MSE)</span><br><span class="line"><span class="comment">#0.3407539</span></span><br></pre></td></tr></tbody></table></figure>
-<h2 id="3-3-bagging分类">3.3 bagging分类</h2>
-<ul>
-<li>bagging：不断放回地对训练样本进行再抽样(自助法抽样)，每次再抽样地样本量和原来样本量一样(最终的预测值是每棵树的预测值的简单平均)<br>
-👉bagging比boosting简单的组合方式👈</li>
+<h2 id="3-3-bagging分类"><a href="#3-3-bagging分类" class="headerlink" title="3.3 bagging分类"></a>3.3 bagging分类</h2><ul>
+<li>bagging：不断放回地对训练样本进行再抽样(自助法抽样)，每次再抽样地样本量和原来样本量一样(最终的预测值是每棵树的预测值的简单平均)<br>👉bagging比boosting简单的组合方式👈</li>
 </ul>
 <figure class="highlight r"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">library</span>(ipred)</span><br><span class="line">MSE = rep(<span class="number">0</span>,Z)</span><br><span class="line">set.seed(<span class="number">1010</span>)</span><br><span class="line"><span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1</span>:Z){</span><br><span class="line">	m=mm[[i]];M=mean((w[m,D]-mean(w[m,D]))^<span class="number">2</span>)</span><br><span class="line">	a=bagging(y~.,w[-m,]) </span><br><span class="line">	MSE[i]=mean((w[m,D]-predict(a,w[m,]))^<span class="number">2</span>)/M</span><br><span class="line">}</span><br><span class="line">mean(MSE)</span><br><span class="line"><span class="comment">#0.3164777</span></span><br></pre></td></tr></tbody></table></figure>
-<h2 id="3-4-随机森林分类">3.4 随机森林分类</h2>
-<ul>
-<li>随机森林(random forest):
-<ul>
+<h2 id="3-4-随机森林分类"><a href="#3-4-随机森林分类" class="headerlink" title="3.4 随机森林分类"></a>3.4 随机森林分类</h2><ul>
+<li>随机森林(random forest):<ul>
 <li>由随机放回地在抽样的样本幸成地决策树组成</li>
 <li>特点：决定决策树的每一节点的分割变量由随机选取的少数变量决定的👉每棵决策树的样本是随机的，每棵树的每个节点的产生随机(<strong>随机</strong>)</li>
 </ul>
@@ -325,24 +304,15 @@ $$(\hat f_1,\hat f_2,…,\hat f_p)=\underset{(f_1,f_2,…f_p)}{\arg\min}\sum<sup
 <figure class="highlight r"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">library</span>(randomForest)</span><br><span class="line">MSE = rep(<span class="number">0</span>,Z)</span><br><span class="line">set.seed(<span class="number">1010</span>)</span><br><span class="line"><span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1</span>:Z){</span><br><span class="line">	m=mm[[i]];M=mean((w[m,D]-mean(w[m,D]))^<span class="number">2</span>)</span><br><span class="line">	a=randomForest(y~.,w[-m,]) </span><br><span class="line">	MSE[i]=mean((w[m,D]-predict(a,w[m,]))^<span class="number">2</span>)/M</span><br><span class="line">}</span><br><span class="line">mean(MSE)</span><br><span class="line"><span class="comment">#0.2789902</span></span><br></pre></td></tr></tbody></table></figure>
 <p>⚠：不同的随机数种子，运行所得到的随机森林的结果不同</p>
 <figure class="highlight r"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#重要性度量</span></span><br><span class="line"><span class="keyword">library</span>(randomForest)</span><br><span class="line">set.seed(<span class="number">1010</span>)</span><br><span class="line">SS = randomForest(y~.,data=w,importance=<span class="literal">TRUE</span>,proximity=<span class="literal">TRUE</span>)</span><br><span class="line">SS$importance</span><br><span class="line"><span class="comment">#第一列：替换该变量👉s.t.精确度平均递减</span></span><br><span class="line"><span class="comment">#第二列：将该变量视作拆分变量👉s.t.均方误差的平均递减</span></span><br><span class="line"><span class="comment">#数值越大，变量越重要</span></span><br></pre></td></tr></tbody></table></figure>
-<h2 id="3-5-支持向量机分类">3.5 支持向量机分类</h2>
-<ul>
-<li>支持向量回归(support vector regression)：由SVM(分类)发展出来的回归方法</li>
-</ul>
-<h3 id="3-5-1-SVM">3.5.1 SVM</h3>
-<ul>
-<li>
-<p>目的：空间中两类点(y=1或y=-1)用超平面$\pmb{w}^T\pmb{x}+b=0$分开(若严格线性可分则存在这样的超平面)，希望超平面的两类点的距离最大</p>
+<h2 id="3-5-支持向量机分类"><a href="#3-5-支持向量机分类" class="headerlink" title="3.5 支持向量机分类"></a>3.5 支持向量机分类</h2><ul>
+<li>支持向量回归(support vector regression)：由SVM(分类)发展出来的回归方法<h3 id="3-5-1-SVM"><a href="#3-5-1-SVM" class="headerlink" title="3.5.1 SVM"></a>3.5.1 SVM</h3></li>
+<li><p>目的：空间中两类点(y=1或y=-1)用超平面$\pmb{w}^T\pmb{x}+b=0$分开(若严格线性可分则存在这样的超平面)，希望超平面的两类点的距离最大</p>
 </li>
-<li>
-<p>即s.t.隔离带宽$\rho=\frac{2}{||\pmb{w}||}$最大</p>
-<p>$$\Longleftrightarrow L(\pmb{w},b,\pmb{\alpha})=\frac{||\pmb{w}||<sup>2}{2}-\sum</sup>n_{i=1}\alpha_i[y_i(\pmb{w}^T\pmb{x}_i+b)-1]$$(Lagrange乘子法)</p>
+<li><p>即s.t.隔离带宽$\rho=\frac{2}{||\pmb{w}||}$最大</p>
 </li>
 </ul>
-<h3 id="3-5-2-SVR">3.5.2 SVR</h3>
-<h2 id="3-6-最近邻方法分类">3.6 最近邻方法分类</h2>
-<h2 id="3-7-神经网络分类">3.7 神经网络分类</h2>
-<script>
+<p><script type="math/tex">\Longleftrightarrow L(\pmb{w},b,\pmb{\alpha})=\frac{||\pmb{w}||^2}{2}-\sum^n_{i=1}\alpha_i[y_i(\pmb{w}^T\pmb{x}_i+b)-1]</script>(Lagrange乘子法)</p>
+<h3 id="3-5-2-SVR"><a href="#3-5-2-SVR" class="headerlink" title="3.5.2 SVR"></a>3.5.2 SVR</h3><h2 id="3-6-最近邻方法分类"><a href="#3-6-最近邻方法分类" class="headerlink" title="3.6 最近邻方法分类"></a>3.6 最近邻方法分类</h2><h2 id="3-7-神经网络分类"><a href="#3-7-神经网络分类" class="headerlink" title="3.7 神经网络分类"></a>3.7 神经网络分类</h2><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -442,7 +412,7 @@ $$(\hat f_1,\hat f_2,…,\hat f_p)=\underset{(f_1,f_2,…f_p)}{\arg\min}\sum<sup
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text">第三章 横截面数据回归：机器学习方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-决策树分类-分类树"><span class="nav-number">1.1.</span> <span class="nav-text">3.1 决策树分类(分类树)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-boosting分类"><span class="nav-number">1.2.</span> <span class="nav-text">3.2 boosting分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-bagging分类"><span class="nav-number">1.3.</span> <span class="nav-text">3.3 bagging分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-随机森林分类"><span class="nav-number">1.4.</span> <span class="nav-text">3.4 随机森林分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5-支持向量机分类"><span class="nav-number">1.5.</span> <span class="nav-text">3.5 支持向量机分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-1-SVM"><span class="nav-number">1.5.1.</span> <span class="nav-text">3.5.1 SVM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-2-SVR"><span class="nav-number">1.5.2.</span> <span class="nav-text">3.5.2 SVR</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-6-最近邻方法分类"><span class="nav-number">1.6.</span> <span class="nav-text">3.6 最近邻方法分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-7-神经网络分类"><span class="nav-number">1.7.</span> <span class="nav-text">3.7 神经网络分类</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第三章-横截面数据回归：机器学习方法"><span class="nav-number">1.</span> <span class="nav-text">第三章 横截面数据回归：机器学习方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-决策树分类-分类树"><span class="nav-number">1.1.</span> <span class="nav-text">3.1 决策树分类(分类树)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-boosting分类"><span class="nav-number">1.2.</span> <span class="nav-text">3.2 boosting分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-bagging分类"><span class="nav-number">1.3.</span> <span class="nav-text">3.3 bagging分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-随机森林分类"><span class="nav-number">1.4.</span> <span class="nav-text">3.4 随机森林分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5-支持向量机分类"><span class="nav-number">1.5.</span> <span class="nav-text">3.5 支持向量机分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-1-SVM"><span class="nav-number">1.5.1.</span> <span class="nav-text">3.5.1 SVM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-2-SVR"><span class="nav-number">1.5.2.</span> <span class="nav-text">3.5.2 SVR</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-6-最近邻方法分类"><span class="nav-number">1.6.</span> <span class="nav-text">3.6 最近邻方法分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-7-神经网络分类"><span class="nav-number">1.7.</span> <span class="nav-text">3.7 神经网络分类</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -562,8 +532,60 @@ $$(\hat f_1,\hat f_2,…,\hat f_p)=\underset{(f_1,f_2,…f_p)}{\arg\min}\sum<sup
 
   
       
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0/dist/katex.min.css">
 
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
