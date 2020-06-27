@@ -30,7 +30,7 @@
 <meta property="og:description" content="最近不想学数分高代巴拉巴拉的，突然想整点东西玩玩">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-06-23T08:32:35.000Z">
-<meta property="article:modified_time" content="2020-06-23T12:23:35.840Z">
+<meta property="article:modified_time" content="2020-06-27T03:49:52.143Z">
 <meta property="article:author" content="Yooki Pan">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="Algorithm">
@@ -202,10 +202,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-06-23 16:32:35 / 修改时间：20:23:35" itemprop="dateCreated datePublished" datetime="2020-06-23T16:32:35+08:00">2020-06-23</time>
+              <time title="创建时间：2020-06-23 16:32:35" itemprop="dateCreated datePublished" datetime="2020-06-23T16:32:35+08:00">2020-06-23</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-27 11:49:52" itemprop="dateModified" datetime="2020-06-27T11:49:52+08:00">2020-06-27</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -237,14 +243,57 @@
 
       
         <a id="more"></a>
-<h1 id="Chapter1-基础知识"><a href="#Chapter1-基础知识" class="headerlink" title="Chapter1 基础知识"></a>Chapter1 基础知识</h1><h2 id="Black-Box-list"><a href="#Black-Box-list" class="headerlink" title="Black Box - list"></a>Black Box - list</h2><ul>
-<li>传统的列表(通常也叫做链表linked list）<ul>
-<li>在Python中的实现<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class Node:</span><br><span class="line">	def _init_(self,value,next=None):</span><br><span class="line">		self.value = value</span><br><span class="line">		self.next = next</span><br></pre></td></tr></tbody></table></figure></li>
+<h1>Chapter1 基础知识</h1>
+<h2 id="1-1渐近记法">1.1渐近记法</h2>
+<ul>
+<li>
+<p>记号<br>
+|记号|解释|<br>
+|:—😐:—😐<br>
+|$f(n)\in O(g)$  |$\exist n_0,c&gt;0,对\forall n\geq n_0:f(x)\leq cg(n) $ |<br>
+|$f(n)\in \Omega (g)$ |$\exist n_0,c&gt;0,对\forall n\geq n_0:f(x)\geq cg(n)$|<br>
+|$f(n)\in \Theta (g) $ |$\exist n_0,c&gt;0,对\forall n\geq n_0:c_1g(n)\leq f(x)\leq c_2g(n)$|</p>
+<p>$Remark：\Theta (g)=O(g)\cap \Omega(g)$</p>
+</li>
+<li>
+<p>几种常见的渐近运行时间实例<br>
+|时间复杂度|相关名称|相关示例及说明|<br>
+|:------😐:-----😐:---------😐<br>
+|$\Theta (1)$|常数级|哈希表的查询与修改|<br>
+|$\Theta (lg n)$|对数级|二分搜索|<br>
+|$\Theta (n)$|线性级|列表的遍历|<br>
+|$\Theta (n lg n)$|线性对数级|任意值序列的最优化排序|<br>
+|$\Theta (n^2)$|平方级|拿$n$个对象进行互相比较|<br>
+|$\Theta (n^3)$|立方级|$Floyd-Warshall$算法|<br>
+|$O(n^k)$|多项式级|基于$n$的$k$层嵌套循环，$k&gt;0$|<br>
+|$\Omega (k^n)$|指数级|每$n$项产生一个子集，$k&gt;1$|<br>
+|$\Theta (n!)$|阶乘级|对$n$个值执行全排列操作|<br>
+  $Some rules：$</p>
+<ol>
+<li>加法运算：只以阶数最高的被加数为准</li>
+<li>乘法运算：常数因子可忽略不计</li>
+<li>保持相关上界或下界严谨性：确保最低上限和最高下限</li>
+</ol>
+</li>
+</ul>
+<p>  $Bonus\ rules：$</p>
+<ol>
+<li>$\Theta (f)+\Theta (g)=\Theta(f+g)$</li>
+<li>$\Theta (f)·\Theta (g)=\Theta(f·g)$</li>
+</ol>
+<h2 id="Black-Box-list">Black Box - list</h2>
+<ul>
+<li>传统的列表(通常也叫做链表linked list）
+<ul>
+<li>在Python中的实现</li>
 </ul>
 </li>
-<li>Python的list：一整块单一连续的内存区块(数组array)<br>👉索引值访问元素：数组<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png?v8">👍</span></li>
 </ul>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class Node:</span><br><span class="line">	def _init_(self,value,next=None):</span><br><span class="line">		self.value = value</span><br><span class="line">		self.next = next</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>Python的list：一整块单一连续的内存区块(数组array)<br>
+👉索引值访问元素：数组👍</li>
+</ul>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -347,7 +396,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter1-基础知识"><span class="nav-number">1.</span> <span class="nav-text">Chapter1 基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Black-Box-list"><span class="nav-number">1.1.</span> <span class="nav-text">Black Box - list</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text">Chapter1 基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1渐近记法"><span class="nav-number">1.1.</span> <span class="nav-text">1.1渐近记法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Black-Box-list"><span class="nav-number">1.2.</span> <span class="nav-text">Black Box - list</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -363,20 +412,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
