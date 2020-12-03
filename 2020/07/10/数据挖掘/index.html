@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/lion32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/lion16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"rafantastic.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="《数据挖掘：概念与技术》3rd 学习笔记吧">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据挖掘">
+<meta property="og:url" content="https://rafantastic.github.io/2020/07/10/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/index.html">
+<meta property="og:site_name" content="Yuki">
+<meta property="og:description" content="《数据挖掘：概念与技术》3rd 学习笔记吧">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://rafantastic.github.io/2020/07/images/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/image-20200720144750893.png">
+<meta property="article:published_time" content="2020-07-10T07:29:27.000Z">
+<meta property="article:modified_time" content="2020-07-21T12:28:43.214Z">
+<meta property="article:author" content="Yooki Pan">
+<meta property="article:tag" content="Data Mining">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://rafantastic.github.io/2020/07/images/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/image-20200720144750893.png">
+
+<link rel="canonical" href="https://rafantastic.github.io/2020/07/10/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>数据挖掘 | Yuki</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  
+  <script type="text/javascript" src="/js/clicklove.js"></script>
+  <script type="text/javascript" src="/js/clicksocialvalue.js"></script>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta custom-logo">
+      <div class="site-meta-headline">
+        <a>
+          <img class="custom-logo-image" src="https://wx2.sinaimg.cn/mw690/6816b8e1gy1gf7fru03ltj20i20i2n0b.jpg" alt="Yuki">
+        </a>
+      </div>
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Yuki</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Do What You Wanna Do</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://rafantastic.github.io/2020/07/10/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://wx4.sinaimg.cn/mw690/6816b8e1gy1gg1k1ceb65j20iw0iwdiq.jpg">
+      <meta itemprop="name" content="Yooki Pan">
+      <meta itemprop="description" content="做自己的人生理想">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuki">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据挖掘
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-10 15:29:27" itemprop="dateCreated datePublished" datetime="2020-07-10T15:29:27+08:00">2020-07-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-21 20:28:43" itemprop="dateModified" datetime="2020-07-21T20:28:43+08:00">2020-07-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index"><span itemprop="name">Tech</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/Data-Mining/" itemprop="url" rel="index"><span itemprop="name">Data Mining</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">《数据挖掘：概念与技术》3rd 学习笔记吧</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <a id="more"></a>
+<h1>第1章 引论</h1>
+<h2 id="1-1-什么是数据挖掘">1.1 什么是数据挖掘</h2>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">A(数据清理: 消除噪声和删除不一致数据) --&gt;B(数据集成: 多种数据源组合在一起) </span><br><span class="line">B --&gt; C(数据选择: 数据库中提取与分析任务相关的数据)</span><br><span class="line">C --&gt; D(数据变换: 汇总或聚集操作把数据变换统一成适合挖掘的形式)</span><br><span class="line">D --&gt; E(数据挖掘: 基本步骤,智能方法提取数据模式)</span><br><span class="line">E --&gt; F(模式评估: 根据某种兴趣度度量)</span><br><span class="line">F --&gt; G(知识表示: 可视化和只是表示,向用户提供挖掘知识)</span><br></pre></td></tr></tbody></table></figure>
+<p>$def: $ <strong>数据挖掘</strong>是从大量量数据中挖掘有趣模式和知识的过程<br>
+- 数据源：数据库、数据仓库、Web、其他信息存储库或动态地流入系统的数据</p>
+<h2 id="1-2-可以挖掘的数据类型">1.2 可以挖掘的数据类型</h2>
+<ul>
+<li>数据挖掘可用于任何类型的数据
+<ul>
+<li>应用中数据的最基本形式：数据库数据、数据仓库数据、事务数据</li>
+<li>其他类型：数据流、有序/序列数据、图或网络数据、空间数据、文本数据、多媒体数据和万维网</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-2-1-数据库数据">1.2.1 数据库数据</h3>
+<ul>
+<li>数据库管理系统(DBMS)：数据库(内部相关的数据) + 软件程序(管理和存取数据)
+<ul>
+<li>软件程序：定义数据库结构和数据存储、说明和管理并发、共享或分布式数据访问，(系统瘫痪或未授权的访问)确保存储的信息的一致性和安全性</li>
+</ul>
+</li>
+<li>关系数据库：表的汇集→属性(列或字段)→元组(记录或行)
+<ul>
+<li>每个元组代表一个对象，被唯一的关键字标识</li>
+<li>ER数据模型：将数据库表示成一组实体和他们之间的联系</li>
+</ul>
+</li>
+<li>数据库查询：SQL关系查询语言/图形用户界面
+<ul>
+<li>关系操作：连接、选择、投影、优化</li>
+<li>查询：可提取数据的一个指定的子集(含聚集函数)</li>
+</ul>
+</li>
+<li>数据挖掘用于关系数据库：<br>
+$$<br>
+\begin{cases}<br>
+搜索趋势：预测、检测偏差\<br>
+数据模式\<br>
+\end{cases}<br>
+$$</li>
+</ul>
+<h3 id="1-2-2-数据仓库">1.2.2 数据仓库</h3>
+<ul>
+<li>
+<p>数据仓库：一个从多个数据源收集的信息存储库，存放在一致的模式下，且常驻留在单个站点上。通过数据清理、数据变换、数据集成、数据装入和定期数据刷新来构造。</p>
+<ul>
+<li>数据仓库中的数据：围绕主题组织</li>
+<li>数据存储：历史角度提供信息，汇总</li>
+</ul>
+</li>
+<li>
+<p>多维数据结构建模：数据立方体(data cube)</p>
+<ul>
+<li>每个维度对应于模式中的一个或一组属性，每个单元存放某种聚集度量值(eg: count/sum)</li>
+<li>允许预计算与快速访问汇总数据👉适合联机分析处理OLAP操作允许在不同的抽象层提供数据(适合不同的用户角度)<br>
+$$<br>
+OLAP例子\begin{cases}<br>
+下钻(drill-down)\<br>
+上卷(roll-up)\<br>
+\end{cases}<br>
+$$</li>
+</ul>
+</li>
+<li>
+<p>拓展：多维数据挖掘(探索式多维数据挖掘)👉允许在各种粒度进行多为组合探查</p>
+</li>
+</ul>
+<h3 id="1-2-3-事务数据">1.2.3 事务数据</h3>
+<ul>
+<li>事务数据
+<ul>
+<li>事务数据库的每个记录代表一个事务</li>
+<li>一个事务包含一个事务标志号及一个组成事务的项的列表</li>
+</ul>
+</li>
+<li>频繁模式
+<ul>
+<li>频繁项集：频繁地一起销售的商品的集合</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-2-4-其他类型的数据">1.2.4 其他类型的数据</h3>
+<p>$$<br>
+\begin{cases}<br>
+事件相关或序列数据：历史记录、股票交易记录、时间序列和生物学序列数据\<br>
+数据流：视频监控和传感器数据(连续播送)\<br>
+空间数据：地图\<br>
+工程设计数据：建筑数据、系统部件或集成电路\<br>
+超文本和多媒体数据：文本、图象、视频和音频数据\<br>
+图和网状数据：社会和信息网络\<br>
+万维网：由Internet提供的巨型、广泛分布的信息存储库\<br>
+\end{cases}<br>
+$$</p>
+<ul>
+<li>解决的方案<br>
+$$<br>
+\begin{cases}<br>
+时间数据/股票交易数据/文本数据：预测/趋势\<br>
+计算机网络数据：消息流的异常进行入侵检测(聚类、流模型动态构建/当前的频繁模式与先前的比较)\<br>
+空间数据：变化趋势，空间对象子集的自相关或关联\<br>
+…\<br>
+\end{cases}<br>
+$$</li>
+</ul>
+<h2 id="1-3-可以挖掘什么类型的模式">1.3 可以挖掘什么类型的模式</h2>
+<p>$$<br>
+数据挖掘功能<br>
+\begin{cases}<br>
+特征化与区分\<br>
+频繁模式、关联和相关性挖掘\<br>
+分类与回归\<br>
+聚类分析\<br>
+离群点分析\<br>
+\end{cases}<br>
+$$</p>
+<p>$$<br>
+任务<br>
+\begin{cases}<br>
+描述性(descriptive)：刻画目标数据中数据的一般性质\<br>
+预测性(predictive)：当前数据进行归纳以便做出预测\<br>
+\end{cases}<br>
+$$</p>
+<h3 id="1-3-1-类-概念描述：特征化与区分">1.3.1 类/概念描述：特征化与区分</h3>
+<p>$$<br>
+\begin{cases}<br>
+数据特征化：汇总所研究类(目标类)的数据\<br>
+数据区分：将目标类与一个或多个比较类(对比类)进行比较\<br>
+数据特征化和区分\<br>
+\end{cases}<br>
+$$</p>
+<ul>
+<li>
+<p>数据特征化(data characterization)</p>
+<ul>
+<li>目标类数据的一般特性或特征的汇总，常通过查询收集对那个用户指定类的数据</li>
+<li>输出：饼图、条图、曲线、多维数据立方体或包括交叉表在内的多维表</li>
+<li>结果描述：广义关系或规则(特征规则)</li>
+<li>有效方法<br>
+$$<br>
+\begin{cases}<br>
+基于统计度量和图的简单数据汇总\<br>
+基于数据立方体的OLAP上卷操作(执行用户控制、沿指定维的数据汇总)\<br>
+面向属性的归纳技术\<br>
+\end{cases}<br>
+$$</li>
+</ul>
+</li>
+<li>
+<p>数据区分(data discrimination)</p>
+<ul>
+<li>将目标类数据对象的一般特性与一个或多个对比类对象的一般特性进行比较</li>
+<li>输出区分描述：应包括比较度量(区分规则discriminant rule)</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-3-2-挖掘频繁模式、关联和相关性">1.3.2 挖掘频繁模式、关联和相关性</h3>
+<ul>
+<li>
+<p>频繁模式(frequent pattern)：在数据中频繁出现的模式<br>
+$$<br>
+\begin{cases}<br>
+频繁项集：频繁地在事务数据集中一起出现的商品的集合<br>
+频繁子序列(序列模式)：(先后顺序)<br>
+频繁子结构(频繁结构模式)：涉及不同的结构形式(图、树或格)<br>
+\end{cases}<br>
+$$</p>
+</li>
+<li>
+<p>关联分析<br>
+$$<br>
+\begin{cases}<br>
+单维关联规则(single-dimensional association rule)；包含单个谓词的关联规则\<br>
+多维关联规则(multi-dimensional)：涉及多个属性或谓词的关联，每个属性称作一个维\<br>
+\end{cases}<br>
+$$</p>
+<ul>
+<li>一个关联规则如果不能同时满足<strong>最小支持度阈值</strong>和<strong>最小置信度阈值</strong>，则被丢弃，进一步分析👉相关联的属性-值之间的统计<strong>相关性</strong>(correlation)</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-3-3-用于预测分析的分类与回归">1.3.3 用于预测分析的分类与回归</h3>
+<ul>
+<li>
+<p>分类(classification)👉离散的，无序的标号</p>
+<ul>
+<li>找出描述和区分数据类或概念的<strong>模型</strong>(或函数)，以便能够使用模型预测类标号未知的对象的类标号</li>
+<li>导出模型是基于对<strong>训练数据集</strong>(类标号已知的数据对象)的分析</li>
+<li>用于预测类标号未知的对象的类标号</li>
+<li>导出的模型
+<ul>
+<li>决策树：类流程图的树结构，每个<strong>结点</strong>代表在一个属性值上的测试，每个<strong>分支</strong>代表测试的一个结果，<strong>树叶</strong>代表类或类分布</li>
+<li>神经网络：类神经元的处理单元，单元之间加权连接</li>
+<li>朴素贝叶斯分类、支持向量机、k最近邻分类…<br>
+$$<br>
+\begin{cases}<br>
+分类规则(IF-THEN规则)\<br>
+决策树\<br>
+数学公式\<br>
+神经网络\<br>
+\end{cases}<br>
+$$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>回归👉连续值函数模型</p>
+<ul>
+<li>预测缺失的或难以获得的数值数据值</li>
+<li>预测：数值预测、类标号预测</li>
+<li>基于可用数据的分布趋势识别</li>
+</ul>
+</li>
+<li>
+<p>相关分析(relevance analysis)</p>
+<ul>
+<li>需在分类和回归之前进行</li>
+<li>识别与分类和回归过程显著相关的属性</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-3-4-聚类分析">1.3.4 聚类分析</h3>
+<ul>
+<li>聚类分析
+<ul>
+<li>前提：开始不存在标记类的数据</li>
+<li>原则：最大化类内相似性、最小化类间相似性</li>
+<li>便于<strong>分类法形成</strong>(taxonomy formation)，将观测组织分类成分类结构(将类似的时间组织在一起)</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-3-5-离群点分析">1.3.5 离群点分析</h3>
+<ul>
+<li>离群点(outlier)
+<ul>
+<li>一些数据对象与数据的一般行为或模型不一致</li>
+<li>离群点分析/异常挖掘<br>
+$$<br>
+\begin{cases}<br>
+统计检验\<br>
+距离度量\<br>
+基于密度\<br>
+\end{cases}<br>
+$$</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-3-6-所有模式都是有趣的吗？">1.3.6 所有模式都是有趣的吗？</h3>
+<ul>
+<li>
+<p>所有模式都是有趣的吗？</p>
+<ol>
+<li>易于被人理解</li>
+<li>在某种确信度上，对新的或检验数据是有效的</li>
+<li>潜在有用的</li>
+<li>新颖的</li>
+</ol>
+<ul>
+<li>模式兴趣度的客观度量
+<ul>
+<li>支持度、置信度、准确率、覆盖率</li>
+</ul>
+</li>
+<li>需结合特定用户需要和兴趣的主观度量</li>
+</ul>
+</li>
+<li>
+<p>数据挖掘系统能产生所有有趣的模式吗？</p>
+<ul>
+<li>涉及数据挖掘算法的<strong>完全性</strong></li>
+</ul>
+</li>
+<li>
+<p>数据挖掘系统能够仅产生有趣的模式吗？</p>
+<ul>
+<li>数据挖掘的优化问题</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-4-使用什么技术">1.4 使用什么技术</h2>
+<ul>
+<li>
+<p>统计学</p>
+<ul>
+<li>统计模型、推理统计学(预测统计学)、统计假设检验</li>
+</ul>
+</li>
+<li>
+<p>机器学习</p>
+<ul>
+<li>机器学习：关注模型的准确率</li>
+<li>数据挖掘：关注模型的准确率，强调挖掘方法在大型数据集上的有效性和可伸缩性以及处理复杂数据类型的办法，开发新的、非传统的方法<br>
+$$<br>
+\begin{cases}<br>
+监督学习(supervised learning)\<br>
+无监督学习(unsupervised learning)\<br>
+半监督学习(semi-supervised learning)\<br>
+主动学习(active learning)\<br>
+\end{cases}<br>
+$$</li>
+</ul>
+</li>
+<li>
+<p>数据库系统与数据仓库</p>
+</li>
+<li>
+<p>信息检索(IR)</p>
+<ul>
+<li>特点：假定所搜索的数据是无结构的；信息检索查询主要用关键词，无复杂的结构</li>
+<li>主体模型</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-5-面向什么类型的数据">1.5 面向什么类型的数据</h2>
+<p>$$<br>
+\begin{cases}<br>
+商务智能(BI)\<br>
+Web搜索引擎\<br>
+\end{cases}<br>
+$$</p>
+<h2 id="1-6-数据挖掘的主要问题">1.6 数据挖掘的主要问题</h2>
+<p>$$<br>
+\begin{cases}<br>
+挖掘方法<br>
+\begin{cases}<br>
+挖掘各种新的知识类型\<br>
+挖掘多维空间中的知识\<br>
+跨学科\<br>
+提升网络环境下的发现能力\<br>
+处理不确定性、噪声或不完全数据\<br>
+\end{cases}<br>
+\<br>
+用户界面<br>
+\begin{cases}<br>
+交互挖掘\<br>
+结合背景知识\<br>
+特定的数据挖掘和数据挖掘查询语言\<br>
+数据挖掘结果的表示和可视化\<br>
+\end{cases}<br>
+\<br>
+有效性和可伸缩性<br>
+\begin{cases}<br>
+数据挖掘算法的有效性和可伸缩性\<br>
+并行、分布式和增量挖掘算法\<br>
+\end{cases}<br>
+\<br>
+数据库类型的多样性<br>
+\begin{cases}<br>
+处理复杂的数据类型<br>
+挖掘动态的、网络的、全球的数据库<br>
+\end{cases}<br>
+\<br>
+数据挖掘与社会<br>
+\begin{cases}<br>
+数据挖掘的社会影响\<br>
+保护隐私的数据挖掘\<br>
+无形的数据挖掘\<br>
+\end{cases}<br>
+\end{cases}<br>
+$$</p>
+<h1>第2章 认识数据</h1>
+<ul>
+<li>本章：熟悉数据<br>
+$$<br>
+本章解决的问题<br>
+\begin{cases}<br>
+数据由什么类型的属性或字段组成？\<br>
+每个属性具有何种类型的数据值？\<br>
+哪些属性是离散的，哪些是连续值的？\<br>
+数据看上去如何？值如何分布？\<br>
+什么方法可以可视化地观察数据？\<br>
+能看出离群点吗？\<br>
+可以度量某些数据对象与其它数据对象之间的相似性吗？\<br>
+\end{cases}<br>
+$$</li>
+</ul>
+<p>$$<br>
+\begin{cases}<br>
+了解属性的不同类型\<br>
+描述属性数据的中心趋势和散布的统计度量\<br>
+熟悉对属性值分布可视化的技术\<br>
+计算对象之间的相似性或相异性\<br>
+\end{cases}<br>
+$$</p>
+<h2 id="2-1-数据对象与属性类型">2.1 数据对象与属性类型</h2>
+<ul>
+<li>
+<p>数据对象：样本、实例、数据点或对象(数据集由数据对象组成，一个数据对象代表一个实体)</p>
+<ul>
+<li>数据元组：数据对象存放在数据库中(行→数据对象；列→属性)</li>
+</ul>
+</li>
+<li>
+<p>属性(attribute)：数据字段</p>
+<ul>
+<li>观测：给定属性的观测值</li>
+<li>属性向量(观测向量)：描述一个给定对象的一组属性</li>
+<li>数据的分布：单变量(univariate)、双变量(bivariate)等<br>
+$$<br>
+属性的别称<br>
+\begin{cases}<br>
+属性：数据挖掘和数据库\<br>
+维(dimension)：数据仓库\<br>
+特征(feature)：机器学习\<br>
+变量(variable)：统计学\<br>
+\end{cases}<br>
+$$</li>
+</ul>
+</li>
+<li>
+<p>属性的类型<br>
+|类型 | | ||<br>
+|:–😐:–😐:–😐:–😐<br>
+|标称(nominal attribute)|值是一些符号或事物的名称，可看作是<strong>分类</strong>(categorial)的/枚举(enumeration)的，无序|定性|众数(mode)|<br>
+|二元(binary attribute)|(bool属性)一种标称属性，只有两个类别或状态：0.1；可对称可非对称|定性|-|<br>
+|序数(ordinal attribute)|可能的值之间具有有意义的序或秩评定(ranking)，相继值得差未知(数值属性可由离散化得到)|定性|众数/中位数|<br>
+|数值(numeric attribute)|1. 区间标度属性：用相同得单位尺度度量，区间属性值有序，可定量评估值之间的差 2.比率标度：具有固定零点的数值属性|定量|众数/中位数/均值|<br>
+|离散属性与连续属性|-|-|-|</p>
+</li>
+</ul>
+<h2 id="2-2-数据的基本统计描述">2.2 数据的基本统计描述</h2>
+<ul>
+<li>思维导图<br>
+$$<br>
+\begin{cases}<br>
+中心趋势度量：均值、中位数、众数、中列数\<br>
+数据的散布：极差、四分位数、四分位数极差、五数概括和合图、方差和标准差\<br>
+图形可视化：条图、饼图、线图、分位数图、分位数-分位数图、直方图、散点图\<br>
+\end{cases}<br>
+$$</li>
+</ul>
+<h3 id="2-2-1-中心趋势度量：均值、中位数和众数">2.2.1 中心趋势度量：均值、中位数和众数</h3>
+<ul>
+<li>均值(mean)
+<ul>
+<li>最常用、最有效的数值度量；对极端值很敏感</li>
+<li>加权算术均值(加权平均)</li>
+<li>截尾均值(trimmed mean)：可能会丢失有价值的信息</li>
+</ul>
+</li>
+<li>中位数(median)
+<ul>
+<li>(非对称数据的好度量)有序数据值得中间值；不唯一</li>
+<li>观测数量很大时，中位数的计算开销大<br>
+$$</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>划分区间找出中位数区间\</li>
+<li>插值计算整个数据得中位数的近似值\<br>
+median = L_1+(\frac{\frac{N}{2}+(\sum freq)<em>i}{freq</em>{median}})width\</li>
+</ol>
+<p>L_1：中位数区间的下界\<br>
+N：整个数据集中值的个数\<br>
+(\sum freq)<em>i：低于中位数区间的所有区间的频率和\<br>
+freq</em>{median}：中位数区间的频率\<br>
+width：中位数区间的宽度\<br>
+$$</p>
+<ul>
+<li>
+<p>众数(mode)</p>
+<ul>
+<li>出现最频繁的值</li>
+<li>可有多个众数<br>
+$$<br>
+\begin{cases}<br>
+单峰(unimodal)\<br>
+多峰(multimodal)<br>
+\begin{cases}<br>
+双峰(bimodal)\<br>
+三峰(trimodal)\<br>
+…\<br>
+\end{cases}<br>
+\<br>
+\end{cases}<br>
+$$</li>
+</ul>
+</li>
+<li>
+<p>中列数(midrange)：数据集最大值最小值的平均值</p>
+</li>
+</ul>
+<h3 id="2-2-2-度量数据散布：极差、四分位数、方差、标准差和四分位数极差">2.2.2 度量数据散布：极差、四分位数、方差、标准差和四分位数极差</h3>
+<ul>
+<li>注：数理统计中都有学过嘻</li>
+<li>四分位数极差$$IQR=Q_3-Q1$$</li>
+<li>离群点：不掉入$[Q_1-1.5IQR,  Q_3+1.5IQR]$</li>
+<li>五数概括(five-number summary)：$Minimun, Q_1, Median, Q_3, Maximum$</li>
+<li>盒图(boxplot)：箱线图</li>
+</ul>
+<h3 id="2-2-3-数据的基本统计描述的图形显示">2.2.3 数据的基本统计描述的图形显示</h3>
+<ul>
+<li>有助于识别噪声和离群点，对数据清理有用</li>
+</ul>
+<ol>
+<li>分位数图</li>
+<li>分位数-分位数图(quantile-quantile plot)</li>
+<li>直方图
+<ul>
+<li>桶(bucket)/箱(bin)：数据分布的不相交子集</li>
+<li>宽度：桶的范围</li>
+</ul>
+</li>
+<li>散点图与数据相关
+<ul>
+<li>正负相关/不相关</li>
+</ul>
+</li>
+</ol>
+<h2 id="2-3-数据可视化">2.3 数据可视化</h2>
+<ul>
+<li>思维导图<br>
+$$<br>
+\begin{cases}<br>
+基于像素的技术<br>
+\begin{cases}<br>
+空间填充曲线(space-filling curve)\<br>
+圆弓分割技术(circle segment technique)\<br>
+\end{cases}<br>
+\<br>
+几何投影技术<br>
+\begin{cases}<br>
+散点图\<br>
+散点图矩阵\<br>
+平行坐标(parallel coordinates)\<br>
+\end{cases}<br>
+\<br>
+基于图符的技术<br>
+\begin{cases}<br>
+切尔诺夫脸(Chernoff faces)<br>
+人物线条画(stick figure)<br>
+\end{cases}<br>
+\<br>
+层次可视化技术<br>
+\begin{cases}<br>
+n-Vision(Worlds-within-Worlds)\<br>
+树图(tree-map)<br>
+\end{cases}<br>
+\<br>
+可视化复杂对象和关系<br>
+\begin{cases}<br>
+标签云(tag cloud)<br>
+\end{cases}<br>
+\<br>
+\end{cases}<br>
+$$</li>
+</ul>
+<h2 id="2-4-度量数据的相似性和相异性">2.4 度量数据的相似性和相异性</h2>
+<ul>
+<li>
+<p>簇：数据对象的集合，簇内对象相互相似，其它簇中对象相异</p>
+</li>
+<li>
+<p>邻近性：相似性和相异性<br>
+$$<br>
+\begin{cases}<br>
+数据矩阵：存放数据对象\<br>
+相异性矩阵：存放数据对象对的相异性值\<br>
+\end{cases}<br>
+$$</p>
+</li>
+<li>
+<p>思维导图<br>
+$$<br>
+\begin{cases}<br>
+计算被标称属性、二元属性、数值属性、序数属性和被这些属性组合刻画的对象的相异性\<br>
+提供对非常长、稀疏的数据向量(如表示信息建索的文档的词频向量)的相似性度量\<br>
+\end{cases}<br>
+$$</p>
+</li>
+</ul>
+<h3 id="2-4-1-数据矩阵与相异性矩阵">2.4.1 数据矩阵与相异性矩阵</h3>
+<p>-数据矩阵<br>
+$$<br>
+\left[<br>
+\begin{matrix}<br>
+x_{11} &amp; \cdots &amp; x_{1f} &amp; \cdots &amp; x_{1p} \<br>
+\cdots &amp; \cdots &amp; \cdots &amp; \cdots &amp; \cdots \<br>
+x_{i1} &amp; \cdots &amp; x_{if} &amp; \cdots &amp; x_{ip} \<br>
+\cdots &amp; \cdots &amp; \cdots &amp; \cdots &amp; \cdots \<br>
+x_{n1} &amp; \cdots &amp; x_{nf} &amp; \cdots &amp; x_{np} \<br>
+\end{matrix}<br>
+\right]<br>
+$$</p>
+<ul>
+<li>相异性矩阵<br>
+$$<br>
+\left[<br>
+\begin{matrix}<br>
+0      &amp;        &amp;        &amp;        &amp; \<br>
+d(2,1) &amp;      0 &amp;        &amp;        &amp; \<br>
+d(3,1) &amp; d(3,2) &amp;      0 &amp;        &amp; \<br>
+\vdots &amp; \vdots &amp; \vdots &amp;        &amp; \<br>
+d(n,1) &amp; d(n,2) &amp; \cdots &amp; \cdots &amp; 0 \<br>
+\end{matrix}<br>
+\right]<br>
+$$</li>
+</ul>
+<h3 id="2-4-2-标称属性的邻近性度量">2.4.2 标称属性的邻近性度量</h3>
+<ul>
+<li>计算标称属性所刻画的对象之间的相异性<br>
+$$<br>
+不匹配率：\<br>
+d(i,j)=\frac{p-m}{p} \<br>
+m：匹配的数目(i与j取值相同状态的属性数) \<br>
+p：刻画对象的属性总数 \<br>
+\<br>
+相似性：\<br>
+sim(i,j)=1-d(i,j)=\frac{m}{p}<br>
+$$</li>
+</ul>
+<h3 id="2-4-3-二元属性的邻近性度量">2.4.3 二元属性的邻近性度量</h3>
+<p>||对象j ||||<br>
+|:–😐:–😐:–😐:–😐<br>
+|对象j||1|	0|	sum|<br>
+||1|	q|	r|	q+r|<br>
+||0|	s|	t|	s+t|<br>
+||sum|	q+s|	r+t|	p|</p>
+<p>-计算两个二元属性之间的相异性<br>
+$$<br>
+\begin{cases}<br>
+对称的二元相异性：d(i,j)=\frac{r+s}{q+r+s+t} \<br>
+非对称的二元相异性：d(i,j)=\frac{r+s}{q+r+s} \<br>
+非对称的二元相似性：<strong>Jaccard系数</strong>sim(i,j)=\frac{q}{q+r+s}=1-d(i,j)、、<br>
+\end{cases}<br>
+$$</p>
+<h3 id="2-4-4-数值属性的相异性：闵可夫斯基距离">2.4.4 数值属性的相异性：闵可夫斯基距离</h3>
+<ul>
+<li>
+<p>度量(metric)</p>
+<ol>
+<li>非负性</li>
+<li>同一性</li>
+<li>对称性</li>
+<li>三角不等式<br>
+| 距离|    |<br>
+|:–😐:–😐<br>
+|欧几里得距离|$d(i,j)=\sqrt{(x_{i1}-x_{j1})<sup>2+(x_{i2}-x_{j2})</sup>2+\cdots+(x_{ip}-x_{jp})^2}$|<br>
+|曼哈顿距离|$d(i,j)=|x_{i1}-x_{j1}|+|x_{i2}-x_{j2}|+\cdots+|x_{ip}-x_{jp}|$|<br>
+|闵可夫斯基距离/Minkowski|$d(i,j)=\sqrt[h]{|x_{i1}-x_{j1}|<sup>h+|x_{i2}-x_{j2}|</sup>h+\cdots+|x_{ip}-x_{jp}|^h}$|<br>
+|上确界距离/Chebyshev|$d(i,j)=lim_{h\rightarrow \infty}(\sum<sup>p_{f=1}{(|x_{if}-x_{jf}|</sup>k)<sup>{\frac{1}{k}}}=max</sup>p_j{|x_{if}-x_{jf}|}$|</li>
+</ol>
+</li>
+<li>
+<p>欧几里得距离：$L_2$</p>
+</li>
+<li>
+<p>曼哈顿距离：$L_1$</p>
+</li>
+<li>
+<p>闵可夫斯基距离：$L_p$</p>
+</li>
+<li>
+<p>上确界距离：$L_{max}、L_{\infty}$</p>
+</li>
+</ul>
+<h3 id="2-4-5-序数属性的邻近性度量">2.4.5 序数属性的邻近性度量</h3>
+<ul>
+<li>数值属性可离散化得到</li>
+<li>处理序数属性(设$f$是描述$n$个对象的一组序数属性之一，计算相异性步骤)
+<ol>
+<li>给第$i$个对象的$f$值赋秩$r_{ij}$</li>
+<li>规格化$r_{ij}$：$z_{ij}=\frac{r_{ij}-1}{M_f-1}$</li>
+<li>相异性由2.4.4任意一种数值属性($z_{ij}$作为第$i$个对象的$f$值)的距离度量计算；相似性：$sim(i,j)=1-d(i,j)$</li>
+</ol>
+</li>
+</ul>
+<h3 id="2-4-6-混合类型属性的相异性">2.4.6 混合类型属性的相异性</h3>
+<ul>
+<li>
+<p>计算混合属性类型的对象之间的相异性：<br>
+$Method 1$ 每种类型的属性分组，对每组类型分别进行数据挖掘分析(eg：聚类分析)。若分析可兼容，则方法可行(实际应用不大可能)。<br>
+$Method 2$ 所有属性类型一起处理，将不同的属性组合在单个相异性矩阵中，把有意义的属性转换到$[0.0, 1.0]$。计算规则如下<br>
+|类型|计算|<br>
+|:–😐:–😐<br>
+|数值|$d_{ij}^{(j)}=\frac{|x_{if}-x_{jf}|}{max_hx_{hf}-min_hx_{hf}}$|<br>
+|标称|$$\begin{cases} d_{ij}<sup>{(j)}=0,x_{ij}=x_{jf}\d_{ij}</sup>{(j)}=1,else\ \end{cases}$$|<br>
+|序数|$z_{ij}=\frac{r_{ij}-1}{M_f-1}$|</p>
+</li>
+<li>
+<p>假设数据集包含$p$个混合类型的属性，对象$i$和$j$之间的相异性$d(i,j)$定义为：<br>
+$$<br>
+d(i,j)=\frac{\sum<sup>p_{j=1}\delta</sup>{(f)}<em>{ij}d<sup>{(f)}_{ij}}{\sum</sup>p</em>{j=1}\delta^{(f)}_{ij}}<br>
+$$</p>
+</li>
+</ul>
+<h3 id="2-4-7-余弦相似性">2.4.7 余弦相似性</h3>
+<ul>
+<li>
+<p>词频矩阵(term-frequency vector)：稀疏矩阵(需忽略0匹配的数值数据度量)</p>
+</li>
+<li>
+<p>余弦相似性：($\in 非度量测度(nonmetric measure)$)<br>
+令$x$和$y$是两个待比较的向量，相似性函数取余弦度量<br>
+$$<br>
+sim(x,y)=\frac{x·y}{||x||||y||}<br>
+$$</p>
+</li>
+<li>
+<p>Tanimoto系数/Tanimoto距离</p>
+<ul>
+<li>属性为二值属性时，余弦相似性函数可以用共享特征或属性解释。</li>
+</ul>
+</li>
+</ul>
+<h1>第3章 数据预处理</h1>
+<ul>
+<li>低质量数据的原因：噪声、缺失值和不一致数据</li>
+<li>思维导图<br>
+$$<br>
+\begin{cases}<br>
+数据清理：清除数据的噪声，纠正不一致\<br>
+数据集成：将数据由多个数据源合并成一个一致的数据存储\<br>
+数据归约：降低数据的规模(如聚集、删除冗余特征或聚类)\<br>
+数据变换：把数据压缩到较小的区间(如规范化)<br>
+\end{cases}<br>
+$$</li>
+</ul>
+<h2 id="3-1-数据预测处理：概述">3.1 数据预测处理：概述</h2>
+<ul>
+<li>数据质量
+<ul>
+<li>准确性、完整性、一致性、时效性、可解释性</li>
+</ul>
+</li>
+<li>数据预处理的主要任务<br>
+|主要步骤| |<br>
+|:–😐:–|<br>
+|数据清理(data cleaning)|填写缺失值，光滑噪声数据，识别或删除离群点，解决不一致性|<br>
+|数据集成(data integration)|代表同一概念的属性在不同的数据库中可能不同(不一致性和冗余)|<br>
+|数据归约(data reduction)|数据集的简化；$数据规约策略\begin{cases}维归约:数据编码\begin{cases}数据压缩技术(小波变换/PCA)\属性子集选择(去掉不相关的属性)\属性构造(从原来的属性导出更有用的小属性集)\end{cases} \ 数值规约：用较小的表示取代数据\begin{cases} 参数模型(回归和对数线性模型)\非参数模型(直方图、聚类、抽样或数据聚集)\end{cases}\end{cases}$|<br>
+|数据变换(data transformation)|规范化、数据离散化、概念分层|</li>
+</ul>
+<p><img src="../../images/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/image-20200720144750893.png" alt="image-20200720144750893"></p>
+<h2 id="3-2-数据清理">3.2 数据清理</h2>
+<ol>
+<li>缺失值
+<ul>
+<li>解决方法</li>
+</ul>
+<ol>
+<li>忽略元组</li>
+<li>人工填写缺失值</li>
+<li>使用一个全局常量填充缺失值</li>
+<li>使用属性的中心度量(如均值或中位数)填充缺失值</li>
+<li>使用与给定元组属同一类的所有样本的属性均值或中位数</li>
+<li>使用最有可能的值填充缺失值：回归/决策树/贝叶斯推理等</li>
+</ol>
+</li>
+<li>噪声数据
+<ul>
+<li>定义：被测量的变量的随机误差或方差</li>
+<li>数据光滑技术</li>
+</ul>
+<ol>
+<li>分箱(binning)：通过考察数据的“近邻”来光滑有序数据值，有序的值被分布到一些“桶”或箱中，属于<strong>局部光滑</strong>；分为<strong>用箱均值光滑、用箱中位数光滑、用箱边界光滑</strong></li>
+<li>回归(regression)：用一个函数拟合数据来光滑数据</li>
+<li>离群点分析(outlier analysis)：可通过如聚类检测离群点</li>
+</ol>
+</li>
+<li>数据清理作为一个过程
+<ul>
+<li>偏差检测(discrepancy detection)
+<ul>
+<li>偏差检测的工具：数据清洗工具(data scrubbing tool)；数据审计工具(data auditing tool)</li>
+</ul>
+</li>
+<li>数据变换
+<ul>
+<li>数据迁移工具(data migration tool)；ETL工具(Extraction/Transformation/Loading)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="3-3-数据集成">3.3 数据集成</h2>
+<h3 id="3-3-1-实体识别问题">3.3.1 实体识别问题</h3>
+<ul>
+<li>模式集成与对象匹配(多个信息源的现实世界的等价实体的匹配)</li>
+<li>注意匹配时的数据的结构</li>
+</ul>
+<h3 id="3-3-2-冗余和相关分析">3.3.2 冗余和相关分析</h3>
+<ol>
+<li>标称数据的$\chi ^2$相关检验
+<ul>
+<li>$\chi ^2$统计检验假设A和B是独立的；若拒绝假设，即认为A和B是统计相关的。<br>
+|||<br>
+|:–😐:–😐<br>
+|$o_{ij}$|联合事件$(A_i,B_j)$的观测频度(实际计数)|<br>
+|$e_{ij}$|$(A_i,B_j)$的期望频度，$e_{ij}=\frac{count(A=a_i)\times count(B=b_j)}{n}$|<br>
+|$\chi ^2_{(r-1)\times(n-1)}$|$Pearson\chi <sup>2$统计量：$\sum</sup>c_{i=1}\sum<sup>r_{j=1}\frac{(o_{ij}-e_{ij})</sup>2}{e_{ij}}$|</li>
+</ul>
+</li>
+<li>数值数据的相关系数
+<ul>
+<li>数值数据，计算属性A和B的相关系数(<strong>Pearson积矩系数(Pearson’s product moment coefficient)</strong>)<br>
+$$<br>
+r_{A,B}=\frac{\sum^n_{i=1}(a_i-\bar A)(b_i-\bar B)}{n\sigma_A\sigma_B}=\frac{\sum^n_{i=1}(a_ib_i)-n\bar A\bar B}{n\sigma_A\sigma_B}<br>
+$$</li>
+</ul>
+</li>
+</ol>
+<p>Remark：</p>
+<ul>
+<li>$r_{A,B}$值较高表明值A(B)(有较高的相关性)可以作为冗余而被删除；</li>
+<li>相关性不蕴涵因果关系，即AB相关不意味着A导致B或B导致A</li>
+</ul>
+<ol start="3">
+<li>数值数据的协方差<br>
+|符号||<br>
+|:–😐:–😐<br>
+|E(A)|$\bar A=\frac{\sum^n_{i=1}a_i}{n}$|<br>
+|E(B)|$\bar B=\frac{\sum^n_{i=1}b_i}{n}$|<br>
+|$Cov(A,B)$|$E((A-\bar A)(B-\bar B))=\frac{\sum^n_{i=1}(a_i-\bar A)(b_i-\bar B)}{n}$|</li>
+</ol>
+<p>$$<br>
+r_{A,B}=\frac{Cov(A,B)}{\sigma_A\sigma_B}<br>
+$$</p>
+<h3 id="3-3-3-元组重复">3.3.3 元组重复</h3>
+<ul>
+<li>元组级检测重复(对于给定的唯一数据实体，存在两个或多个相同的元组)</li>
+<li>数据冗余的另一个来源：去规范化表(denormalized table)👉避免连接来改善性能</li>
+</ul>
+<h3 id="3-3-4-数据值冲突的检测与处理">3.3.4 数据值冲突的检测与处理</h3>
+<ul>
+<li>数据值冲突的检测与处理
+<ul>
+<li>现实世界的同一实体，来自不同数据源的属性值可能不同(可能因表示、尺度或编码不同)</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-4-数据归约">3.4 数据归约</h2>
+<ul>
+<li>数据归约(data reduction)：数据集的规约表示，与原数据相比小得多但接近于保持原始数据的完整性</li>
+</ul>
+<h3 id="3-4-1-数据归约策略概述">3.4.1 数据归约策略概述</h3>
+<ul>
+<li>
+<p>维归约(dimensionality reduction)</p>
+<ul>
+<li>减少所考虑的随机变量或属性的个数<br>
+$$<br>
+\begin{cases}<br>
+小波变换：将原数据变换或投影到较小的空间\<br>
+主成分分析：将原数据变换或投影到较小的空间\<br>
+属性子集选择:检测和删除不相关、弱相关或冗余的属性或维\<br>
+\end{cases}<br>
+$$</li>
+</ul>
+</li>
+<li>
+<p>数量归约(numerosity reduction)</p>
+<ul>
+<li>用替代的、较小的数据表示形式替换元数据<br>
+$$<br>
+\begin{cases}<br>
+参数<br>
+\begin{cases}<br>
+回归和对数线性模型<br>
+\end{cases}<br>
+\<br>
+非参数<br>
+\begin{cases}<br>
+直方图\<br>
+聚类\<br>
+抽样\<br>
+数据立方体聚集\<br>
+\end{cases}<br>
+\<br>
+\end{cases}<br>
+$$</li>
+</ul>
+</li>
+<li>
+<p>数据压缩(data compression)<br>
+$$<br>
+\begin{cases}<br>
+无损的：原数据能够从压缩后的数据重构，不损失信息\<br>
+有损的：近似重构数据\<br>
+\end{cases}<br>
+$$</p>
+</li>
+<li>
+<p>⚠花费在数据归约上的计算时间不应超过或“抵消”在归约后的数据上挖掘所节省的时间</p>
+</li>
+</ul>
+<h3 id="3-4-2-小波变换">3.4.2 小波变换</h3>
+<h3 id="3-4-3-主成分分析">3.4.3 主成分分析</h3>
+<h3 id="3-4-4-属性子集选择">3.4.4 属性子集选择</h3>
+<h3 id="3-4-5-回归和对数线性模型：模型化数据归约">3.4.5 回归和对数线性模型：模型化数据归约</h3>
+<h3 id="3-4-6-直方图">3.4.6 直方图</h3>
+<h3 id="3-4-7-聚类">3.4.7 聚类</h3>
+<h3 id="3-4-8-抽样">3.4.8 抽样</h3>
+<h3 id="3-4-8-数据立方体聚集">3.4.8 数据立方体聚集</h3>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Data-Mining/" rel="tag"># Data Mining</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/27/%E8%8B%B1%E8%AF%AD%E5%8F%A3%E8%AF%AD%E7%B4%A0%E6%9D%90%EF%BC%88%E4%B8%80%EF%BC%89/" rel="prev" title="英语口语素材（一）">
+      <i class="fa fa-chevron-left"></i> 英语口语素材（一）
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text">第1章 引论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-什么是数据挖掘"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 什么是数据挖掘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-可以挖掘的数据类型"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 可以挖掘的数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-数据库数据"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.2.1 数据库数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-数据仓库"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2.2 数据仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-3-事务数据"><span class="nav-number">1.2.3.</span> <span class="nav-text">1.2.3 事务数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-4-其他类型的数据"><span class="nav-number">1.2.4.</span> <span class="nav-text">1.2.4 其他类型的数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-可以挖掘什么类型的模式"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 可以挖掘什么类型的模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-1-类-概念描述：特征化与区分"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.3.1 类&#x2F;概念描述：特征化与区分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-2-挖掘频繁模式、关联和相关性"><span class="nav-number">1.3.2.</span> <span class="nav-text">1.3.2 挖掘频繁模式、关联和相关性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-3-用于预测分析的分类与回归"><span class="nav-number">1.3.3.</span> <span class="nav-text">1.3.3 用于预测分析的分类与回归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-4-聚类分析"><span class="nav-number">1.3.4.</span> <span class="nav-text">1.3.4 聚类分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-5-离群点分析"><span class="nav-number">1.3.5.</span> <span class="nav-text">1.3.5 离群点分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-6-所有模式都是有趣的吗？"><span class="nav-number">1.3.6.</span> <span class="nav-text">1.3.6 所有模式都是有趣的吗？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-使用什么技术"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 使用什么技术</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-面向什么类型的数据"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 面向什么类型的数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-6-数据挖掘的主要问题"><span class="nav-number">1.6.</span> <span class="nav-text">1.6 数据挖掘的主要问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">2.</span> <span class="nav-text">第2章 认识数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-数据对象与属性类型"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 数据对象与属性类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-数据的基本统计描述"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 数据的基本统计描述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-中心趋势度量：均值、中位数和众数"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1 中心趋势度量：均值、中位数和众数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-度量数据散布：极差、四分位数、方差、标准差和四分位数极差"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2.2 度量数据散布：极差、四分位数、方差、标准差和四分位数极差</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3-数据的基本统计描述的图形显示"><span class="nav-number">2.2.3.</span> <span class="nav-text">2.2.3 数据的基本统计描述的图形显示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-数据可视化"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 数据可视化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-度量数据的相似性和相异性"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 度量数据的相似性和相异性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-1-数据矩阵与相异性矩阵"><span class="nav-number">2.4.1.</span> <span class="nav-text">2.4.1 数据矩阵与相异性矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-2-标称属性的邻近性度量"><span class="nav-number">2.4.2.</span> <span class="nav-text">2.4.2 标称属性的邻近性度量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-3-二元属性的邻近性度量"><span class="nav-number">2.4.3.</span> <span class="nav-text">2.4.3 二元属性的邻近性度量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-4-数值属性的相异性：闵可夫斯基距离"><span class="nav-number">2.4.4.</span> <span class="nav-text">2.4.4 数值属性的相异性：闵可夫斯基距离</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-5-序数属性的邻近性度量"><span class="nav-number">2.4.5.</span> <span class="nav-text">2.4.5 序数属性的邻近性度量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-6-混合类型属性的相异性"><span class="nav-number">2.4.6.</span> <span class="nav-text">2.4.6 混合类型属性的相异性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-7-余弦相似性"><span class="nav-number">2.4.7.</span> <span class="nav-text">2.4.7 余弦相似性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">3.</span> <span class="nav-text">第3章 数据预处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-数据预测处理：概述"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 数据预测处理：概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-数据清理"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 数据清理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-数据集成"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 数据集成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-1-实体识别问题"><span class="nav-number">3.3.1.</span> <span class="nav-text">3.3.1 实体识别问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-2-冗余和相关分析"><span class="nav-number">3.3.2.</span> <span class="nav-text">3.3.2 冗余和相关分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-3-元组重复"><span class="nav-number">3.3.3.</span> <span class="nav-text">3.3.3 元组重复</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-4-数据值冲突的检测与处理"><span class="nav-number">3.3.4.</span> <span class="nav-text">3.3.4 数据值冲突的检测与处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-数据归约"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 数据归约</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-1-数据归约策略概述"><span class="nav-number">3.4.1.</span> <span class="nav-text">3.4.1 数据归约策略概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-2-小波变换"><span class="nav-number">3.4.2.</span> <span class="nav-text">3.4.2 小波变换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-3-主成分分析"><span class="nav-number">3.4.3.</span> <span class="nav-text">3.4.3 主成分分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-4-属性子集选择"><span class="nav-number">3.4.4.</span> <span class="nav-text">3.4.4 属性子集选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-5-回归和对数线性模型：模型化数据归约"><span class="nav-number">3.4.5.</span> <span class="nav-text">3.4.5 回归和对数线性模型：模型化数据归约</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-6-直方图"><span class="nav-number">3.4.6.</span> <span class="nav-text">3.4.6 直方图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-7-聚类"><span class="nav-number">3.4.7.</span> <span class="nav-text">3.4.7 聚类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-8-抽样"><span class="nav-number">3.4.8.</span> <span class="nav-text">3.4.8 抽样</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-8-数据立方体聚集"><span class="nav-number">3.4.9.</span> <span class="nav-text">3.4.8 数据立方体聚集</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yooki Pan"
+      src="https://wx4.sinaimg.cn/mw690/6816b8e1gy1gg1k1ceb65j20iw0iwdiq.jpg">
+  <p class="site-author-name" itemprop="name">Yooki Pan</p>
+  <div class="site-description" itemprop="description">做自己的人生理想</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+	  
+	  <!--网易云插件-->
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=862098178&auto=1&height=66"></iframe>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yooki Pan</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div><script color="0,0,255" opacity="0.7" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":80,"vOffset":-50},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
+</html>

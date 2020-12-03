@@ -30,7 +30,7 @@
 <meta property="og:description" content="吴喜之老师的书涉及的范围广但是涉及较浅(很浅基本就是带过)">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-06-25T02:00:32.000Z">
-<meta property="article:modified_time" content="2020-06-26T09:37:25.315Z">
+<meta property="article:modified_time" content="2020-07-13T11:23:10.358Z">
 <meta property="article:author" content="Yooki Pan">
 <meta property="article:tag" content="R">
 <meta property="article:tag" content="Statistic">
@@ -211,7 +211,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-26 17:37:25" itemprop="dateModified" datetime="2020-06-26T17:37:25+08:00">2020-06-26</time>
+                <time title="修改时间：2020-07-13 19:23:10" itemprop="dateModified" datetime="2020-07-13T19:23:10+08:00">2020-07-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -412,6 +412,30 @@ $$</li>
 </ul>
 </li>
 </ul>
+<h1>第四章 横截面数据分类：经典方法</h1>
+<p>$$<br>
+分类问题<br>
+\begin{cases}<br>
+自变量较多分类变量：ML\<br>
+自变量较少分类变量<br>
+\begin{cases}<br>
+因变量两水平:logistic回归、probit回归\<br>
+因变量&gt;2水平：经典判别分析(多元统计)<br>
+\begin{cases}<br>
+线性判别分析lda\<br>
+混合线性判别分析mda\<br>
+灵活线性判别分析\<br>
+\end{cases}<br>
+\<br>
+\end{cases}\<br>
+\end{cases}<br>
+$$</p>
+<h2 id="4-1-logistic回归和probit回归">4.1 logistic回归和probit回归</h2>
+<h3 id="4-1-1-广义线性模型简单回顾">4.1.1 广义线性模型简单回顾</h3>
+<h3 id="4-1-2-脊柱数据例子">4.1.2 脊柱数据例子</h3>
+<h3 id="4-1-3-logistic回归">4.1.3 logistic回归</h3>
+<h3 id="4-1-3-probit回归">4.1.3 probit回归</h3>
+<h2 id="4-2-经典判别分析">4.2 经典判别分析</h2>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -515,7 +539,7 @@ $$</li>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text">第三章 横截面数据回归：机器学习方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-决策树回归-回归树"><span class="nav-number">1.1.</span> <span class="nav-text">3.1 决策树回归(回归树)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-boosting回归"><span class="nav-number">1.2.</span> <span class="nav-text">3.2 boosting回归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-bagging回归"><span class="nav-number">1.3.</span> <span class="nav-text">3.3 bagging回归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-随机森林回归"><span class="nav-number">1.4.</span> <span class="nav-text">3.4 随机森林回归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5-支持向量机回归"><span class="nav-number">1.5.</span> <span class="nav-text">3.5 支持向量机回归</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-1-SVM"><span class="nav-number">1.5.1.</span> <span class="nav-text">3.5.1 SVM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-2-SVR"><span class="nav-number">1.5.2.</span> <span class="nav-text">3.5.2 SVR</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-6-人工神经网络回归"><span class="nav-number">1.6.</span> <span class="nav-text">3.6 人工神经网络回归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-7-10折交叉验证结果汇总及方法稳定性讨论"><span class="nav-number">1.7.</span> <span class="nav-text">3.7 10折交叉验证结果汇总及方法稳定性讨论</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text">第三章 横截面数据回归：机器学习方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-决策树回归-回归树"><span class="nav-number">1.1.</span> <span class="nav-text">3.1 决策树回归(回归树)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-boosting回归"><span class="nav-number">1.2.</span> <span class="nav-text">3.2 boosting回归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-bagging回归"><span class="nav-number">1.3.</span> <span class="nav-text">3.3 bagging回归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-随机森林回归"><span class="nav-number">1.4.</span> <span class="nav-text">3.4 随机森林回归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5-支持向量机回归"><span class="nav-number">1.5.</span> <span class="nav-text">3.5 支持向量机回归</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-1-SVM"><span class="nav-number">1.5.1.</span> <span class="nav-text">3.5.1 SVM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-2-SVR"><span class="nav-number">1.5.2.</span> <span class="nav-text">3.5.2 SVR</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-6-人工神经网络回归"><span class="nav-number">1.6.</span> <span class="nav-text">3.6 人工神经网络回归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-7-10折交叉验证结果汇总及方法稳定性讨论"><span class="nav-number">1.7.</span> <span class="nav-text">3.7 10折交叉验证结果汇总及方法稳定性讨论</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">2.</span> <span class="nav-text">第四章 横截面数据分类：经典方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-logistic回归和probit回归"><span class="nav-number">2.1.</span> <span class="nav-text">4.1 logistic回归和probit回归</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-1-广义线性模型简单回顾"><span class="nav-number">2.1.1.</span> <span class="nav-text">4.1.1 广义线性模型简单回顾</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-2-脊柱数据例子"><span class="nav-number">2.1.2.</span> <span class="nav-text">4.1.2 脊柱数据例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-3-logistic回归"><span class="nav-number">2.1.3.</span> <span class="nav-text">4.1.3 logistic回归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-3-probit回归"><span class="nav-number">2.1.4.</span> <span class="nav-text">4.1.3 probit回归</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-经典判别分析"><span class="nav-number">2.2.</span> <span class="nav-text">4.2 经典判别分析</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -531,20 +555,20 @@ $$</li>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
